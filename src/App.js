@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import About from './pages/AboutPage';
 import Cart from './pages/CartPage';
@@ -14,9 +15,16 @@ import './App.css';
 function App() {
   return (
     <Fragment>
-      <h1 className="text-title">
-        <span className="text-main">Tech</span> Store
-      </h1>
+      {/* Navbar, sidebar, cart, footer */}
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/products" exact component={Products} />
+        <Route path="/products/:id" component={SingleProduct} />
+        <Route component={Default} />
+      </Switch>
     </Fragment>
   );
 }
