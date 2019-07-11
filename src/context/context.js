@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { items } from './productData';
 import { linkData } from './linkData';
 import { socialData } from './socialData';
 
@@ -8,10 +9,18 @@ class ProductProvider extends Component {
   state = {
     sidebarOpen: false,
     cartOpen: false,
-    cartItems: 2,
     links: linkData,
     socialIcons: socialData,
-    cart: []
+    cartItems: 0,
+    cart: [],
+    cardSubTotal: 0,
+    cartTax: 0,
+    cartTotal: 0,
+    storeProducts: [],
+    filteredProducts: [],
+    featuredProducts: [],
+    singleProduct: {},
+    loading: true
   };
 
   handleSidebarToggle = () => {
