@@ -7,14 +7,14 @@ import styled from 'styled-components';
 export default function Navbar() {
   return (
     <ProductConsumer>
-      {({ handleSidebarToggle, handleCart, cartItems }) => {
+      {({ handleSidebarToggle, handleCartToggle, cartItems }) => {
         return (
           <NavWrapper>
             <div className="nav-center">
               <FaBars className="nav-icon" onClick={handleSidebarToggle} />
               <img src={logo} alt="logo" />
               <div className="nav-cart">
-                <FaCartPlus className="nav-icon" onClick={handleCart} />
+                <FaCartPlus className="nav-icon" onClick={handleCartToggle} />
                 <div className="cart-items">{cartItems}</div>
               </div>
             </div>
