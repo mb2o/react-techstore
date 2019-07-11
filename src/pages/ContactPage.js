@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
+import Hero from '../components/Hero';
+import contactBcg from '../images/contactBcg.jpeg';
+import Contact from '../components/ContactPage/Contact';
 
 export default function ContactPage() {
   return (
     <Fragment>
-      <h1>Hello from Contact Page</h1>
+      <Hero img={contactBcg}>Hello from Contact Page</Hero>
+      <Contact />
     </Fragment>
   );
 }
