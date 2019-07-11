@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
+import Services from '../components/HomePage/Services';
+import Featured from '../components/HomePage/Featured';
 
 export default function HomePage() {
   return (
@@ -10,6 +12,8 @@ export default function HomePage() {
           our products
         </Link>
       </Hero>
+      <Services />
+      <Featured />
     </Fragment>
   );
 }
