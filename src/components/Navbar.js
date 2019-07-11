@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FaBars, FaCartPlus } from 'react-icons/fa';
 import { ProductConsumer } from '../context';
 import logo from '../images/logo.svg';
@@ -7,11 +7,11 @@ import styled from 'styled-components';
 export default function Navbar() {
   return (
     <ProductConsumer>
-      {({ handleSidebar, handleCart, cartItems }) => {
+      {({ handleSidebarToggle, handleCart, cartItems }) => {
         return (
           <NavWrapper>
             <div className="nav-center">
-              <FaBars className="nav-icon" onClick={handleSidebar} />
+              <FaBars className="nav-icon" onClick={handleSidebarToggle} />
               <img src={logo} alt="logo" />
               <div className="nav-cart">
                 <FaCartPlus className="nav-icon" onClick={handleCart} />
