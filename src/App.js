@@ -9,13 +9,20 @@ import Home from './pages/HomePage';
 import Products from './pages/ProductsPage';
 import SingleProduct from './pages/SingleProductPage';
 
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import Sidecart from './components/Sidecart';
+import Footer from './components/Footer';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
   return (
     <Fragment>
-      {/* Navbar, sidebar, cart, footer */}
+      <Navbar />
+      <Sidebar />
+      <Sidecart />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
@@ -25,6 +32,7 @@ function App() {
         <Route path="/products/:id" component={SingleProduct} />
         <Route component={Default} />
       </Switch>
+      <Footer />
     </Fragment>
   );
 }
