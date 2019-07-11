@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+/// Pages ///
 import About from './pages/AboutPage';
 import Cart from './pages/CartPage';
 import Contact from './pages/ContactPage';
@@ -9,11 +10,13 @@ import Home from './pages/HomePage';
 import Products from './pages/ProductsPage';
 import SingleProduct from './pages/SingleProductPage';
 
+/// Components ///
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Sidecart from './components/Sidecart';
 import Footer from './components/Footer';
 
+/// Styles ///
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
