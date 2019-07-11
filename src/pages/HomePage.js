@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
-import { ProductConsumer } from '../context';
+import { Link } from 'react-router-dom';
+import Hero from '../components/Hero';
 
 export default function HomePage() {
   return (
     <Fragment>
-      <ProductConsumer>
-        {value => {
-          return <h1>Hello from Home Page</h1>;
-        }}
-      </ProductConsumer>
+      <Hero title="awesome gadgets" max="true">
+        <Link to="/products">our products</Link>
+      </Hero>
     </Fragment>
   );
 }
