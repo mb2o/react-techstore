@@ -65,7 +65,9 @@ class ProductProvider extends Component {
   };
 
   getProductFromStorage = () => {
-    return [];
+    return localStorage.getItem('singleProduct')
+      ? JSON.parse(localStorage.getItem('singleProduct'))
+      : {};
   };
 
   syncStorage = () => {
@@ -137,7 +139,14 @@ class ProductProvider extends Component {
   };
 
   setSingleProduct = id => {
-    console.log(id);
+    let product = this.state.storeProducts.find(item => item.id === id);
+
+    localStorage.setItem('singleProduct', JSON.stringify(product));
+
+    this.setState({
+      singleProduct: { ...product },
+      loading: false
+    });
   };
 
   handleSidebarToggle = () => {
