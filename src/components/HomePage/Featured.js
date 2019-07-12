@@ -9,7 +9,7 @@ export default function Featured() {
     <section className="py-5">
       <div className="container">
         <Title title="featured products" center />
-        <div className="row">
+        <div className="row my-5">
           <ProductConsumer>
             {({ featuredProducts }) => {
               return featuredProducts.map(product => (
