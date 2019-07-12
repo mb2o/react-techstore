@@ -37,26 +37,68 @@ class ProductProvider extends Component {
 
     let featuredProducts = storeProducts.filter(item => item.featured);
 
-    this.setState({
-      storeProducts,
-      featuredProducts,
-      filteredProducts: storeProducts,
-      cart: this.getCartFromStorage(),
-      singleProduct: this.getProductFromStorage(),
-      loading: false
-    });
+    this.setState(
+      {
+        storeProducts,
+        featuredProducts,
+        filteredProducts: storeProducts,
+        cart: this.getCartFromStorage(),
+        singleProduct: this.getProductFromStorage(),
+        loading: false
+      },
+      () => {
+        this.addTotals();
+      }
+    );
   };
 
   getCartFromStorage = () => {
     return [];
   };
+
   getProductFromStorage = () => {
     return [];
   };
-  syncStorage = () => {};
 
-  getTotals = () => {};
-  addTotals = () => {};
+  syncStorage = () => {
+    //
+  };
+
+  getTotals = () => {
+    let subTotal = 0;
+    let cartItems = 0;
+
+    this.state.cart.forEach(item => {
+      subTotal += item.total;
+      cartItems += item.count;
+    });
+
+    subTotal = parseFloat(subTotal.toFixed(2));
+
+    let tax = subTotal * 0.21;
+    tax = parseFloat(tax.toFixed(2));
+
+    let total = subTotal + tax;
+    total = parseFloat(total.toFixed(2));
+
+    return {
+      cartItems,
+      subTotal,
+      tax,
+      total
+    };
+  };
+
+  addTotals = () => {
+    const { cartItems, subTotal, tax, total } = this.getTotals();
+
+    this.setState({
+      cartItems,
+      cardSubTotal: subTotal,
+      cartTax: tax,
+      cartTotal: total
+    });
+  };
 
   addToCart = id => {
     let tempCart = [...this.state.cart];
