@@ -53,7 +53,15 @@ class ProductProvider extends Component {
   };
 
   getCartFromStorage = () => {
-    return [];
+    let cart;
+
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'));
+    } else {
+      cart = [];
+    }
+
+    return cart;
   };
 
   getProductFromStorage = () => {
@@ -61,7 +69,7 @@ class ProductProvider extends Component {
   };
 
   syncStorage = () => {
-    //
+    localStorage.setItem('cart', JSON.stringify(this.state.cart));
   };
 
   getTotals = () => {
