@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ProductConsumer } from '../context';
-import { isTemplateElement } from '@babel/types';
 
 export default function Footer() {
   return (
