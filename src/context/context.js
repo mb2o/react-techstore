@@ -13,7 +13,7 @@ class ProductProvider extends Component {
     socialIcons: socialData,
     cartItems: 0,
     cart: [],
-    cardSubTotal: 0,
+    cartSubTotal: 0,
     cartTax: 0,
     cartTotal: 0,
     storeProducts: [],
@@ -104,7 +104,7 @@ class ProductProvider extends Component {
 
     this.setState({
       cartItems,
-      cardSubTotal: subTotal,
+      cartSubTotal: subTotal,
       cartTax: tax,
       cartTotal: total
     });
