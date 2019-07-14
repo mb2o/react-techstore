@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { items } from './productData';
+import { client } from './contentful';
+// import { items } from './productData';
 import { linkData } from './linkData';
 import { socialData } from './socialData';
 
@@ -35,7 +36,13 @@ class ProductProvider extends Component {
   };
 
   componentDidMount() {
-    this.setProducts(items);
+    client
+      .getEntries({
+        content_type: 'techStoreProducts'
+      })
+      .then(response => {
+        this.setProducts(response.items);
+      });
   }
 
   setProducts = products => {
