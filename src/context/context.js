@@ -195,7 +195,29 @@ class ProductProvider extends Component {
   };
 
   decrement = id => {
-    console.log('decrement', id);
+    let tempCart = [...this.state.cart];
+    const cartItem = tempCart.find(item => item.id === id);
+
+    cartItem.count = cartItem.count - 1;
+
+    if (cartItem.count === 0) {
+      this.removeItemFromCart(id);
+    } else {
+      cartItem.total = cartItem.count * cartItem.price;
+      cartItem.total = parseFloat(cartItem.total.toFixed(2));
+
+      this.setState(
+        () => {
+          return {
+            cart: [...tempCart]
+          };
+        },
+        () => {
+          this.addTotals();
+          this.syncStorage();
+        }
+      );
+    }
   };
 
   removeItemFromCart = id => {
@@ -216,10 +238,16 @@ class ProductProvider extends Component {
   };
 
   clearCart = () => {
-    console.log('clearCart');
+    this.setState(
+      {
+        cart: []
+      },
+      () => {
+        this.addTotals();
+        this.syncStorage();
+      }
+    );
   };
-
-  // react
 
   render() {
     return (
