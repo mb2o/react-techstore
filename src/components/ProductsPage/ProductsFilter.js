@@ -15,9 +15,17 @@ export default function ProductsFilter() {
         storeProducts,
         handleChange
       }) => {
+        // get unique companies
+        let companies = new Set();
+        companies.add('all');
+        for (let product in storeProducts) {
+          companies.add(storeProducts[product]['company']);
+        }
+        companies = [...companies];
+
         return (
           <div className="row my-5">
-            <div className="col-10 max-auto">
+            <div className="col-10 mx-auto">
               <FilterWrapper>
                 <div className="">
                   <label htmlFor="search">search</label>
@@ -38,9 +46,11 @@ export default function ProductsFilter() {
                     className="filter-item"
                     value={company}
                     onChange={handleChange}>
-                    <option value="all">all</option>
-                    <option value="fuji">fuji</option>
-                    <option value="htc">htc</option>
+                    {companies.map((item, index) => (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -63,14 +73,14 @@ export default function ProductsFilter() {
                 </div>
 
                 <div>
-                  <label htmlFor="shipping" className="mx-2">
+                  <label htmlFor="shipping" className="mr-2">
                     free shipping
                   </label>
                   <input
                     type="checkbox"
                     name="shipping"
                     id="shipping"
-                    value={shipping && true}
+                    checked={shipping && true}
                     onChange={handleChange}
                   />
                 </div>
