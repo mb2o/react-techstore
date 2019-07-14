@@ -29,11 +29,7 @@ export default function SingleProductPage() {
               <div className="container">
                 <div className="row">
                   <div className="col-10 max-auto col-sm-8 col-md-6 my-3">
-                    <img
-                      src={`../${image}`} // src={image} when using contentful
-                      alt="product"
-                      className="img-fluid"
-                    />
+                    <img src={image} alt="product" className="img-fluid" />
                   </div>
                   <div className="col-10 max-auto col-sm-8 col-md-6 my-3">
                     <h5 className="text-title mb-4">model : {title}</h5>

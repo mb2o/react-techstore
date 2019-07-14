@@ -36,6 +36,8 @@ class ProductProvider extends Component {
   };
 
   componentDidMount() {
+    // this.setProducts(items);
+
     client
       .getEntries({
         content_type: 'techStoreProducts'
